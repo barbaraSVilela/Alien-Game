@@ -6,3 +6,4 @@ func _ready():
 
 func updateScore(score):
 	self.text = String(score)
+

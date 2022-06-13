@@ -6,7 +6,7 @@
 
 [node name="Stone1" type="Node2D"]
 script = ExtResource( 2 )
-scroll_speed = 3.0
+scroll_speed = 5.0
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -1, -39.3906 )

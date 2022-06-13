@@ -15,9 +15,12 @@ func _ready():
 	Signals.connect("rewardPlayer",self,"rewardPlayer")
 	Signals.connect("killPlayer",self,"killPlayer")
 
+
 func _physics_process(delta):
 	velocity.y += gravity_scale
 	move_and_collide(velocity*delta)
+	if score ==20:
+		endgame()
 	
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -48,3 +51,6 @@ func rewardPlayer(scoreToAdd):
 
 func killPlayer():
 	queue_free()
+
+func endgame():
+		Signals.emit_signal("killPlayer")
