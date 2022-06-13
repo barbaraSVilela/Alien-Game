@@ -7,10 +7,13 @@ var canJump = true
 var doubleJump = 2
 onready var animation = $AnimatedSprite
 
+var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	animation.play("run")
+	Signals.connect("rewardPlayer",self,"rewardPlayer")
+	Signals.connect("killPlayer",self,"killPlayer")
 
 func _physics_process(delta):
 	velocity.y += gravity_scale
@@ -38,3 +41,10 @@ func _on_Area2D_body_entered(body):
 func _on_Area2D_body_exited(body):
 	if body is StaticBody2D:
 		canJump= false
+
+func rewardPlayer(scoreToAdd):
+	score+=scoreToAdd
+	Signals.emit_signal("updateScore",score)
+
+func killPlayer():
+	queue_free()
