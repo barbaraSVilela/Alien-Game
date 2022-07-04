@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
 var velocity = Vector2.ZERO
-export var jump_velocity = 500.0
-export var gravity_scale = 20.0
+export var jump_velocity = 650.0
+export var gravity_scale = 30.0
 var canJump = true
 var doubleJump = 2
 onready var animation = $AnimatedSprite
@@ -19,8 +19,7 @@ func _ready():
 func _physics_process(delta):
 	velocity.y += gravity_scale
 	move_and_collide(velocity*delta)
-	if score ==20:
-		endgame()
+
 	
 func _input(event):
 	if event.is_action_pressed("jump"):
@@ -52,5 +51,3 @@ func rewardPlayer(scoreToAdd):
 func killPlayer():
 	queue_free()
 
-func endgame():
-		Signals.emit_signal("killPlayer")

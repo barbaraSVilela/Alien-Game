@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/obstacles/Mast.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/HitObstacle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Obstacle.gd" type="Script" id=3]
+
+[node name="Mast" type="Node2D"]
+script = ExtResource( 3 )
+scroll_speed = 5.0
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, -55 )
+scale = Vector2( 0.208174, 0.194102 )
+texture = ExtResource( 1 )
+
+[node name="HitObstacle" parent="." instance=ExtResource( 2 )]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HitObstacle"]
+position = Vector2( -8, 8 )
+scale = Vector2( 0.824458, 0.653482 )
+polygon = PoolVector2Array( -2.32884, -10.2757, 46.5768, -8.80771, 24, -70, 101.305, -118.904, 61.7143, -202.577, -14.555, -154.557, -64.2847, -131.603, -50.9426, -42.8474, -65.2076, -8.80771 )
+
+[connection signal="body_entered" from="HitObstacle" to="." method="_on_HitObstacle_body_entered"]
