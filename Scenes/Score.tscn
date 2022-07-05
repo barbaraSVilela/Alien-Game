@@ -16,7 +16,7 @@ anchor_bottom = 1.0
 margin_right = -800.0
 margin_bottom = -450.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="s" type="RichTextLabel" parent="."]
 margin_left = 94.0
 margin_top = 25.0
 margin_right = 296.0
